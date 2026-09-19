@@ -13,7 +13,20 @@ import { Routes, Route } from "react-router-dom";
 import About from "./pages/About";
 
 
-const logos = ["PRINCE", "WEBKAIZEN", "FRONTEND", "DEVELOPER"];
+const logos = [
+  "PRINCE TIWARI",
+  "DATA ANALYST",
+  "PYTHON",
+  "EXCEL",
+  "EDA",
+  "PANDAS",
+  "NUMPY",
+  "MATPLOTLIB",
+  "SEABORN",
+  "POWER PIVOT",
+  "DAX",
+  "VBA",
+];
 
 export default function App() {
   const [showWelcome, setShowWelcome] = useState(true);
@@ -89,7 +102,7 @@ export default function App() {
               />
 
               <span className="text-[10px] md:text-xs tracking-[0.3em] text-white/70 uppercase font-medium">
-                PRINCE · WEBKAIZEN
+                PRINCE TIWARI · DATA ANALYST
               </span>
             </div>
             <ul className="hidden md:flex items-center gap-10 text-xs tracking-widest text-white/70 uppercase">
@@ -247,13 +260,13 @@ bg-[length:200%_auto]
 bg-gradient-to-r
 from-white via-white/60 to-white
 animate-[shine_4s_linear_infinite]">
-                Creating
+                Turning
                 <br />
-                Websites
+                Data Into
                 <br />
-                That Feel
+                Meaningful
                 <br />
-                Alive.
+                Insights.
               </p>
 
               <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mt-auto">
@@ -266,19 +279,19 @@ animate-[shine_4s_linear_infinite]">
     bg-gradient-to-r
     from-white via-white/60 to-white
     animate-[shine_4s_linear_infinite]">
-                  Turning creative ideas into interactive and{" "} <br />
+                  Data-driven and detail-oriented B.Tech CSE student{" "} <br />
                   <em className="not-italic text-white">
-                    high-quality web experiences.
+                    passionate about solving real-world problems with data.
                   </em>
                 </p>
 
                 <a
-                  href="https://www.webkaizen.in"
+                  href="https://github.com/prince803tiwari"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <button className="inline-flex items-center gap-3 border border-white/20 text-white px-6 py-3 text-xs tracking-[0.25em] uppercase font-semibold hover:bg-white hover:text-black transition-all duration-300 rounded-full">
-                    WEBKAIZEN
+                    GITHUB
                     <ArrowUpRight size={16} />
                   </button>
                 </a>

@@ -11,10 +11,43 @@ export default function FrontendDeveloperSection() {
   const [showCard, setShowCard] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [goAbout, setGoAbout] = useState(false);
+  const [badgeText, setBadgeText] = useState("");
+  const badgeFullText = "✦ Open for Data Analyst & Data Science Roles";
 
   const navigate = useNavigate();
 
   useEffect(() => setMounted(true), []);
+
+  useEffect(() => {
+    let index = 0;
+    let isDeleting = false;
+    let timeout: any;
+
+    const tick = () => {
+      if (!isDeleting) {
+        index++;
+        setBadgeText(badgeFullText.slice(0, index));
+        if (index === badgeFullText.length) {
+          isDeleting = true;
+          timeout = setTimeout(tick, 3500);
+          return;
+        }
+        timeout = setTimeout(tick, 60);
+      } else {
+        index--;
+        setBadgeText(badgeFullText.slice(0, index));
+        if (index === 0) {
+          isDeleting = false;
+          timeout = setTimeout(tick, 500);
+          return;
+        }
+        timeout = setTimeout(tick, 25);
+      }
+    };
+
+    timeout = setTimeout(tick, 300);
+    return () => clearTimeout(timeout);
+  }, []);
 
   // page exit → navigate after animation
   useEffect(() => {
@@ -41,17 +74,17 @@ export default function FrontendDeveloperSection() {
       animate={
         goAbout
           ? {
-            x: "-40vw",
-            scale: 0.92,
-            opacity: 0,
-            filter: "blur(8px)",
-          }
+              x: -120,
+              scale: 0.95,
+              opacity: 0,
+              filter: "blur(10px)",
+            }
           : {
-            x: 0,
-            scale: 1,
-            opacity: 1,
-            filter: "blur(0px)",
-          }
+              x: 0,
+              scale: 1,
+              opacity: 1,
+              filter: "blur(0px)",
+            }
       }
       transition={{
         duration: 1.8,
@@ -61,21 +94,10 @@ export default function FrontendDeveloperSection() {
     >
       {/* TEXT */}
       <div className="relative z-10 max-w-2xl">
-        <motion.div className="flex items-center mb-6">
-          <motion.span
-            animate={{
-              width: ["0ch", "32ch", "32ch", "0ch"],
-            }}
-            transition={{
-              duration: 6,
-              repeat: Infinity,
-              ease: "easeInOut",
-              times: [0, 0.3, 0.8, 1],
-            }}
-            className="inline-block overflow-hidden whitespace-nowrap text-[11px] tracking-[0.3em] uppercase text-white/60 font-mono"
-          >
-            ✦ Available for work
-          </motion.span>
+        <div className="flex items-center mb-6">
+          <span className="inline-block whitespace-nowrap text-[10px] sm:text-[11px] tracking-[0.2em] sm:tracking-[0.25em] uppercase text-white/70 font-mono">
+            {badgeText}
+          </span>
 
           <motion.span
             animate={{
@@ -85,11 +107,11 @@ export default function FrontendDeveloperSection() {
               duration: 0.8,
               repeat: Infinity,
             }}
-            className="text-white/60 font-mono ml-[2px]"
+            className="text-white/70 font-mono ml-[2px]"
           >
             |
           </motion.span>
-        </motion.div>
+        </div>
 
         <div>
           <motion.h1
@@ -98,7 +120,7 @@ export default function FrontendDeveloperSection() {
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
             className="font-extrabold leading-[1.05] tracking-tight text-white text-[clamp(56px,9vw,120px)]"
           >
-            Frontend
+            Data
           </motion.h1>
 
           <motion.h1
@@ -107,7 +129,7 @@ export default function FrontendDeveloperSection() {
             transition={{ duration: 1, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
             className="font-extrabold leading-[1.05] tracking-tight text-white/70 text-[clamp(56px,9vw,120px)] mb-6"
           >
-            Developer
+            Analyst
           </motion.h1>
         </div>
 
@@ -125,8 +147,7 @@ export default function FrontendDeveloperSection() {
     from-white via-white/60 to-white
     animate-[shine_4s_linear_infinite]"
         >
-          Building modern websites with clean, responsive, elegant interfaces.
-          Turning ideas and designs into engaging digital experiences.
+          Data-driven and detail-oriented B.Tech CSE student with a strong foundation in Python, Excel, and data analysis. Passionate about turning data into meaningful insights and solving real-world problems.
         </motion.p>
 
         <motion.div
@@ -135,7 +156,14 @@ export default function FrontendDeveloperSection() {
           transition={{ duration: 1, delay: 0.8 }}
           className="mt-6 flex flex-wrap gap-4"
         >
-          {["Next.js", "React.js", "TypeScript", "Tailwind CSS"].map((tech) => (
+          {[
+            "Python",
+            "Excel & VBA",
+            "Pandas & NumPy",
+            "Matplotlib & Seaborn",
+            "Power Pivot & DAX",
+            "Git & GitHub",
+          ].map((tech) => (
             <div
               key={tech}
               className="
@@ -168,7 +196,7 @@ export default function FrontendDeveloperSection() {
             onClick={() => setShowCard((s) => !s)}
             className="inline-flex items-center gap-2 border border-accent text-accent px-6 py-3 text-xs tracking-[0.25em] uppercase font-semibold hover:bg-accent hover:text-black transition-all duration-200 rounded-full relative z-20"
           >
-            {showCard ? "Hide Card" : "Show Card"}
+            {showCard ? "Hide ID Card" : "Show ID Card"}
           </motion.button>
 
           {/* About Button */}

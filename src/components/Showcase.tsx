@@ -1,44 +1,93 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 
 const techStack = [
-  { name: "HTML5", icon: "https://cdn.simpleicons.org/html5/E34F26", color: "#E34F26" },
-  { name: "CSS3", icon: "https://cdn.simpleicons.org/css/1572B6", color: "#1572B6" },
-  { name: "JavaScript", icon: "https://cdn.simpleicons.org/javascript/F7DF1E", color: "#F7DF1E" },
-  { name: "TypeScript", icon: "https://cdn.simpleicons.org/typescript/3178C6", color: "#3178C6" },
-  { name: "React", icon: "https://cdn.simpleicons.org/react/61DAFB", color: "#61DAFB" },
-  { name: "Next.js", icon: "https://cdn.simpleicons.org/nextdotjs/FFFFFF", color: "#FFFFFF" },
-  { name: "Node.js", icon: "https://cdn.simpleicons.org/nodedotjs/339933", color: "#339933" },
-  { name: "Tailwind", icon: "https://cdn.simpleicons.org/tailwindcss/06B6D4", color: "#06B6D4" },
   { name: "Python", icon: "https://cdn.simpleicons.org/python/3776AB", color: "#3776AB" },
-  { name: "Firebase", icon: "https://cdn.simpleicons.org/firebase/FFCA28", color: "#FFCA28" },
+  { name: "Pandas", icon: "https://cdn.simpleicons.org/pandas/150458", color: "#150458" },
+  { name: "NumPy", icon: "https://cdn.simpleicons.org/numpy/013243", color: "#013243" },
+  { name: "Excel", icon: "https://cdn.simpleicons.org/microsoftexcel/217346", color: "#217346" },
+  { name: "Power BI", icon: "https://cdn.simpleicons.org/powerbi/F2C811", color: "#F2C811" },
+  { name: "C++", icon: "https://cdn.simpleicons.org/cplusplus/00599C", color: "#00599C" },
   { name: "Git", icon: "https://cdn.simpleicons.org/git/F05032", color: "#F05032" },
   { name: "GitHub", icon: "https://cdn.simpleicons.org/github/FFFFFF", color: "#FFFFFF" },
-  { name: "Vercel", icon: "https://cdn.simpleicons.org/vercel/FFFFFF", color: "#FFFFFF" },
-  { name: "Netlify", icon: "https://cdn.simpleicons.org/netlify/00C7B7", color: "#00C7B7" },
+  { name: "Jupyter", icon: "https://cdn.simpleicons.org/jupyter/F37626", color: "#F37626" },
+  { name: "PostgreSQL", icon: "https://cdn.simpleicons.org/postgresql/4169E1", color: "#4169E1" },
   { name: "Terminal", icon: "https://cdn.simpleicons.org/gnometerminal/4EAA25", color: "#4EAA25" },
+  { name: "Visual Basic", icon: "https://cdn.simpleicons.org/visualbasic/5C2D91", color: "#5C2D91" },
+  { name: "Kaggle", icon: "https://cdn.simpleicons.org/kaggle/20BEFF", color: "#20BEFF" },
+  { name: "SciPy", icon: "https://cdn.simpleicons.org/scipy/8CAAE6", color: "#8CAAE6" },
+  { name: "Markdown", icon: "https://cdn.simpleicons.org/markdown/FFFFFF", color: "#FFFFFF" },
 ];
 
-const projects = [
+export interface ProjectItem {
+  title: string;
+  date: string;
+  tech: string;
+  description: string[];
+  thumbnail: string;
+  github: string;
+}
+
+const projects: ProjectItem[] = [
   {
-    tech: "typescript + Tailwind",
-    thumbnail: "https://cdn.jsdelivr.net/gh/princekumar-dev74/portfolio/public/preview.png",
-    github: "https://github.com/princekumar-dev74/portfolio.git",
+    title: "Blinkit Data Analysis Project",
+    date: "Sept 2026",
+    tech: "Python | Pandas | NumPy | Matplotlib | Seaborn",
+    description: [
+      "Performed exploratory data analysis (EDA) on Blinkit sales data to uncover key trends and business insights.",
+      "Cleaned and processed raw data using Pandas and NumPy.",
+      "Created insightful visualizations to analyze sales performance, category trends, and customer behaviour.",
+      "Provided data-driven recommendations to improve business performance.",
+    ],
+    thumbnail: "/assets/blinkit_project.png",
+    github: "https://github.com/prince803tiwari",
   },
   {
-    tech: "Typescript + Tailwind",
-    thumbnail: "/assets/website.png",
-    github: "https://www.webkaizen.in",
+    title: "Excel Sales Analytics Dashboard",
+    date: "Sept 2026",
+    tech: "Excel | PivotTables | Slicers | VBA | DAX",
+    description: [
+      "Built an interactive sales analytics dashboard to track key business metrics.",
+      "Used PivotTables and Slicers for dynamic data analysis and visualization.",
+      "Implemented VBA automation to streamline data processing tasks.",
+      "Helped in identifying sales trends, top products, and regional performance.",
+    ],
+    thumbnail: "/assets/excel_dashboard_project.png",
+    github: "https://github.com/prince803tiwari",
   },
   {
-    tech: "Typescript",
-    thumbnail: "https://cdn.jsdelivr.net/gh/princekumar-dev74/portfolio-v1/public/preview.png",
-    github: "https://github.com/princekumar-dev74/portfolio-v1.git",
+    title: "IPL Data Analysis Capstone Project",
+    date: "Sept 2026",
+    tech: "Python | Pandas | NumPy | Matplotlib | Seaborn",
+    description: [
+      "Analyzed IPL historical data to discover patterns and performance insights across teams and players.",
+      "Performed data cleaning, feature engineering, and exploratory analysis.",
+      "Created various visualizations to highlight key statistics and trends.",
+      "Presented actionable insights based on data-driven analysis.",
+    ],
+    thumbnail: "/assets/ipl_capstone_project.png",
+    github: "https://github.com/prince803tiwari",
   },
 ];
 
 const certificates = [
-  { title: "upcoming", tech: "#", thumbnail: "#" },
-  { title: "upcoming", tech: "#", thumbnail: "#" },
+  {
+    title: "Maintained CGPA of 7.36 (till 5th sem)",
+    subtitle: "Bansal Institute Of Science And Technology, Bhopal",
+    tech: "B.Tech Computer Science & Engineering",
+    thumbnail: "/assets/blinkit_project.png",
+  },
+  {
+    title: "Completed Multiple Real-World Data Projects",
+    subtitle: "Consistently improving technical and analytical skills",
+    tech: "Python · Pandas · EDA · Visualization",
+    thumbnail: "/assets/ipl_capstone_project.png",
+  },
+  {
+    title: "Advanced Excel Analytics & Automation",
+    subtitle: "Interactive Dashboards & Macro Streamlining",
+    tech: "PivotTables · Slicers · VBA · DAX",
+    thumbnail: "/assets/excel_dashboard_project.png",
+  },
 ];
 
 const GithubIcon = () => (
@@ -47,113 +96,100 @@ const GithubIcon = () => (
   </svg>
 );
 
-const DownloadIcon = () => (
-  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-    <path d="M12 16l4-5h-3V4h-2v7H8l4 5zm-8 4h16v-2H4v2z" />
-  </svg>
-);
-
-const Spinner = () => (
-  <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
-    <path
-      d="M12 2v4m0 12v4m10-10h-4M6 12H2"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-    />
-  </svg>
-);
-
-function ProjectCard({ item }: { item: typeof projects[0] }) {
+function ProjectCard({ item }: { item: ProjectItem }) {
   return (
     <div
       className="group relative rounded-2xl border border-white/15 overflow-hidden bg-white/[0.06] 
       hover:border-white/25 transition-all duration-500 
-      hover:-translate-y-2 hover:shadow-2xl hover:shadow-white/10 backdrop-blur-md"
+      hover:-translate-y-2 hover:shadow-2xl hover:shadow-white/10 backdrop-blur-md flex flex-col h-full"
       style={{ backdropFilter: "blur(20px)" }}
     >
-      <div className="relative h-48 overflow-hidden bg-white/5">
+      <div className="relative h-44 overflow-hidden bg-white/5">
         <img
           src={item.thumbnail}
-          alt={item.tech}
+          alt={item.title}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-        <div className="absolute inset-0 bg-white/0 group-hover:bg-white/5 transition-colors duration-300" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+        <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-black/60 border border-white/20 text-[10px] font-mono text-white/80 backdrop-blur-sm">
+          {item.date}
+        </div>
       </div>
-      <div className="p-5 flex items-center justify-between">
-        <span className="text-[10px] uppercase tracking-[0.25em] text-white/40 font-mono">
-          {item.tech}
-        </span>
-        <a
-          href={item.github}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center justify-center w-8 h-8 rounded-full 
-          bg-white/5 border border-white/15 text-white/60 
-          hover:bg-white/10 hover:text-white hover:border-white/30 
-          transition-all duration-200 active:scale-95"
-        >
-          <GithubIcon />
-        </a>
+
+      <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
+        <div>
+          <h3 className="text-white font-bold text-base leading-snug group-hover:text-white/90 transition-colors">
+            {item.title}
+          </h3>
+          <p className="text-[11px] text-emerald-400/90 font-mono tracking-wider mt-1">
+            {item.tech}
+          </p>
+
+          <ul className="mt-3 space-y-1.5 text-xs text-white/70 leading-relaxed font-sans">
+            {item.description.map((bullet, idx) => (
+              <li key={idx} className="flex items-start gap-2">
+                <span className="text-white/40 mt-0.5">•</span>
+                <span>{bullet}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="pt-3 border-t border-white/10 flex items-center justify-between">
+          <span className="text-[10px] uppercase tracking-[0.2em] text-white/40 font-mono">
+            Data Project
+          </span>
+          <a
+            href={item.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="View Code on GitHub"
+            className="flex items-center gap-2 px-3 py-1.5 rounded-full 
+            bg-white/5 border border-white/15 text-white/70 text-xs
+            hover:bg-white/15 hover:text-white hover:border-white/30 
+            transition-all duration-200 active:scale-95"
+          >
+            <GithubIcon />
+            <span>GitHub</span>
+          </a>
+        </div>
       </div>
     </div>
   );
 }
 
 function CertCard({ item }: { item: typeof certificates[0] }) {
-  const [downloading, setDownloading] = useState(false);
-
-  const handleDownload = async () => {
-    setDownloading(true);
-    try {
-      const response = await fetch(item.thumbnail, { mode: "cors" });
-      const blob = await response.blob();
-      const url = window.URL.createObjectURL(blob);
-      const link = document.createElement("a");
-      link.href = url;
-      link.download = `${item.title}.jpg`;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      window.URL.revokeObjectURL(url);
-    } catch (err) {
-      console.error("Download failed:", err);
-    }
-    setTimeout(() => setDownloading(false), 500);
-  };
-
   return (
     <div
       className="group relative rounded-2xl border border-white/15 overflow-hidden bg-white/[0.06]
       hover:border-white/25 transition-all duration-500
-      hover:-translate-y-2 hover:shadow-2xl hover:shadow-white/10 backdrop-blur-md"
+      hover:-translate-y-2 hover:shadow-2xl hover:shadow-white/10 backdrop-blur-md flex flex-col h-full"
       style={{ backdropFilter: "blur(20px)" }}
     >
-      <div className="relative h-48 overflow-hidden bg-white/5">
+      <div className="relative h-44 overflow-hidden bg-white/5">
         <img
           src={item.thumbnail}
           alt={item.title}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-        <div className="absolute bottom-4 left-4 right-4">
-          <p className="text-white font-semibold text-sm leading-snug line-clamp-2">{item.title}</p>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+        <div className="absolute bottom-3 left-4 right-4">
+          <span className="text-[10px] uppercase tracking-[0.25em] text-emerald-400 font-mono">
+            Achievement
+          </span>
+          <p className="text-white font-bold text-sm leading-snug mt-1">{item.title}</p>
         </div>
       </div>
-      <div className="px-5 py-4 flex items-center justify-between">
-        <span className="text-[10px] uppercase tracking-[0.25em] text-white/40 font-mono">
-          {item.tech}
-        </span>
-        <button
-          onClick={handleDownload}
-          className="flex items-center justify-center w-8 h-8 rounded-full 
-          bg-white/5 border border-white/15 text-white/60 
-          hover:bg-white/10 hover:text-white hover:border-white/30 
-          transition-all duration-200 active:scale-95"
-        >
-          {downloading ? <Spinner /> : <DownloadIcon />}
-        </button>
+      <div className="p-5 flex-1 flex flex-col justify-between space-y-3">
+        <p className="text-xs text-white/70 leading-relaxed">
+          {item.subtitle}
+        </p>
+        <div className="pt-3 border-t border-white/10 flex items-center justify-between">
+          <span className="text-[10px] uppercase tracking-[0.2em] text-white/40 font-mono">
+            {item.tech}
+          </span>
+          <span className="text-emerald-400 text-xs">✔ Verified</span>
+        </div>
       </div>
     </div>
   );
@@ -396,7 +432,7 @@ type TabId = "projects" | "certificates" | "tech";
 
 const tabs: { id: TabId; label: string }[] = [
   { id: "projects", label: "Projects" },
-  { id: "certificates", label: "Certificates" },
+  { id: "certificates", label: "Achievements" },
   { id: "tech", label: "Tech Stack" },
 ];
 

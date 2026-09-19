@@ -37,10 +37,12 @@ extend({
 });
 
 const GLTF_PATH = "/assets/cards.glb";
-const TEXTURE_PATH = "/assets/new.jpeg";
+const TEXTURE_PATH = "/assets/lanyard.png";
+const CARD_TEXTURE_PATH = "/assets/updated_card_texture.png";
 
 useGLTF.preload(GLTF_PATH);
 useTexture.preload(TEXTURE_PATH);
+useTexture.preload(CARD_TEXTURE_PATH);
 
 export default function BandCard() {
   const [isMobile, setIsMobile] = useState(false);
@@ -178,9 +180,12 @@ function Band({
   const materials = gltf?.materials || {};
 
   const texture = useTexture(TEXTURE_PATH);
+  const cardTexture = useTexture(CARD_TEXTURE_PATH);
 
   texture.wrapS = THREE.RepeatWrapping;
   texture.wrapT = THREE.RepeatWrapping;
+
+  cardTexture.flipY = false;
 
   const { width, height } = useThree(
     (state) => state.size
@@ -473,6 +478,7 @@ function Band({
               >
                 <meshPhysicalMaterial
                   {...materials.base}
+                  map={cardTexture}
                   roughness={0.35}
                   metalness={0.1}
                   clearcoat={1}

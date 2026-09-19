@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
-import { Code2, User, Globe } from "lucide-react";
+import { BarChart3, Database, LineChart } from "lucide-react";
 import { useEffect } from "react";
 
 export default function WelcomeScreen() {
-  const icons = [Code2, User, Globe];
+  const icons = [Database, BarChart3, LineChart];
 
   useEffect(() => {
     // scroll band
@@ -143,7 +143,7 @@ export default function WelcomeScreen() {
           }}
           className="text-sm text-white/60 tracking-wide"
         >
-          Creating Websites That Feel Alive.
+          Turning Data Into Meaningful Insights.
         </motion.p>
 
         {/* Website Badge */}
@@ -158,15 +158,15 @@ export default function WelcomeScreen() {
         >
           <motion.span
             initial={{ width: "0ch" }}
-            animate={{ width: "22ch" }}
+            animate={{ width: "24ch" }}
             transition={{
               delay: 2.2,
               duration: 2,
               ease: "easeInOut",
             }}
-            className="inline-block overflow-hidden whitespace-nowrap"
+            className="inline-block overflow-hidden whitespace-nowrap uppercase font-mono"
           >
-            www.webkaizen.in
+            ASPIRING DATA ANALYST
           </motion.span>
 
           <motion.span
